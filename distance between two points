@@ -1,0 +1,51 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+double distance(double x1, double y1, double x2, double y2);
+double radius(double cx, double cy, double px, double py);
+double circumference(double r);
+double area(double r);
+
+int main() {
+    cout << fixed << showpoint << setprecision(4);
+
+    double cx, cy, px, py;
+    cout << "=== Circle Measures from Center and a Point ===\n";
+    cout << "Enter center (cx cy): ";
+    cin >> cx >> cy;
+    cout << "Enter point on circle (px py): ";
+    cin >> px >> py;
+
+    double r = radius(cx, cy, px, py);
+    double d = 2 * r;
+    double c = circumference(r);
+    double a = area(r);
+
+    cout << "\nResults\n";
+    cout << "Radius        : " << r << endl;
+    cout << "Diameter      : " << d << endl;
+    cout << "Circumference : " << c << endl;
+    cout << "Area          : " << a << endl;
+
+    return 0;
+}
+
+double distance(double x1, double y1, double x2, double y2) {
+    return sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
+}
+
+double radius(double cx, double cy, double px, double py) {
+    return distance(cx, cy, px, py);
+}
+
+double circumference(double r) {
+    const double PI = 3.1416;
+    return 2 * PI * r;
+}
+
+double area(double r) {
+    const double PI = 3.1416;
+    return PI * r * r;
+}
